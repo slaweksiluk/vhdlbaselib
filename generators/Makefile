@@ -20,8 +20,7 @@ DEPS=hdl_lib_top
 
 # Pbjects is sources with o
 #OBJECTS = $(SOURCES:.vhd=.o)
-OBJECTS = $(addprefix $(WORKDIR), tx_axi_packet.o ccsds_crc_gen_para_core.o\
-ccsds_crc_gen.o axis_last_insert.o)
+OBJECTS = $(addprefix $(WORKDIR), tx_axi_packet.o axis_last_insert.o)
 TB_OBJECTS = $(addprefix $(WORKDIR), $(TARGET:=.o))
 all: $(OBJECTS)
 
