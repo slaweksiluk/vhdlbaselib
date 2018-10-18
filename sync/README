@@ -1,0 +1,18 @@
+#VHDL library
+/sync/
+
+* sync_block.vhd
+The simplest synchronizaion stage - two dff connected in serial. Dedicated for
+slow-changing signals.
+
+* pulse_sync.vhd
+Similar to sync block, but with toogle logic. Possible to sync one clock period
+pulse length to other clock domain
+
+
+   
+
+
+
+
+
