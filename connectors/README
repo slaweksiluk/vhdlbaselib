@@ -1,0 +1,25 @@
+#VHDL library
+/connectors/
+
+* axi_to_native_fifo.vhd, native_fifo_to_axi.vhd
+Simple logic to convert Xilinx native FIFO standard to AXIS standard
+
+* connector.vhd [AXIS]
+Connects two AXIS modules
+
+* dword_filler.vhd [AXIS]
+Converts 128b (4x32b DWORDS) with 4bit keep signal (currently valid - need to
+be changed) to one 32b DWORD. Currenlt it doesnt support every combination of
+keep signal (dedicated only for PCIe).
+
+* dword_serializer.vhd [AXIS]
+Converts 128bit (every chunk valid) to 32bit
+
+* multi_s_axis_switch.vhd, single_s_axis_switch.vhd [AXIS]
+AXIS switches. Multiple slaves to one master or signle slave to multiple masters.
+
+
+
+
+
+

@@ -1,0 +1,34 @@
+[*]
+[*] GTKWave Analyzer v3.3.88 (w)1999-2018 BSI
+[*] Wed Apr 11 13:02:15 2018
+[*]
+[dumpfile] "/home/slawek/git/flash/HDL-LIB/detectors/test/vunit_out/test_output/lib.wb_cycle_end_det_tb.random_d66bd12afa0590080c246f0fa1cbe6e956e3439c/ghdl/wave.ghw"
+[dumpfile_mtime] "Wed Apr 11 12:59:18 2018"
+[dumpfile_size] 1746
+[savefile] "/home/slawek/git/flash/HDL-LIB/detectors/test/wb_cycle_end_det_tb.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] 849 162
+*-26.000000 108300000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.wb_cycle_end_det_tb.
+[sst_width] 229
+[signals_width] 321
+[sst_expanded] 1
+[sst_vpaned_height] 285
+@28
+top.wb_cycle_end_det_tb.dut.clk
+top.wb_cycle_end_det_tb.dut.rst
+@420
+top.wb_cycle_end_det_tb.dut.wb_request
+top.wb_cycle_end_det_tb.dut.wb_acknowledge
+top.wb_cycle_end_det_tb.dut.cycle_finished
+top.wb_cycle_end_det_tb.dut.requests_pending
+top.wb_cycle_end_det_tb.dut.max_requests_pending
+@28
+top.wb_cycle_end_det_tb.wb_req
+top.wb_cycle_end_det_tb.wb_ack
+@421
+top.wb_cycle_end_det_tb.wb_cycle
+[pattern_trace] 1
+[pattern_trace] 0

@@ -1,0 +1,18 @@
+state WAIT:
+	if (m_axis_rx_tdata == 64'h0000007f73000001 && m_axis_rx_tvalid == 1'bR) then
+		goto IGNORE_PACKET;
+	elseif (m_axis_rx_tvalid == 1'bR) then 
+		trigger;
+	else
+		goto WAIT;
+	endif
+
+state IGNORE_PACKET:
+	if (m_axis_rx_tlast == 1'bR) then
+		goto WAIT;
+	else
+		goto IGNORE_PACKET;
+	endif
+
+	
+	

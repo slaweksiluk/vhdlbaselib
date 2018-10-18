@@ -1,0 +1,28 @@
+#VHDL library
+/generators/
+
+* crc_gen_core.vhd
+CRC genrator paralell calculator
+
+* crc_gen.vhd [AXIS]
+CRC core with axis slave interface for source data and axis master interface
+to output results
+
+* lfsr_counter.vhd
+Linear feedback shift register
+
+* prng_gen.vhd [AXIS]
+LFSR with axis master interface
+
+* tx_axi_packet.vhd [AXIS]
+Module gets data from axis slave interface and generates N packets at axis
+master intarface. Packet length is defined via packet_len input port.
+
+
+
+
+
+
+
+
+

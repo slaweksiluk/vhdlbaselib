@@ -1,0 +1,86 @@
+[*]
+[*] GTKWave Analyzer v3.3.88 (w)1999-2018 BSI
+[*] Wed Mar 28 08:55:34 2018
+[*]
+[dumpfile] "/home/slawek/git/flash/HDL-LIB/interconnects/test/vunit_out/test_output/lib.wb_demux_tb.num_slaves_3,stall_prob_0.7,num_trans_1,ack_prob_1.0,addr_width_32,data_width_8.sel0-adr0_5c6ece323e2b4ebdd70b03099abb3bfab4406f64/ghdl/wave.ghw"
+[dumpfile_mtime] "Wed Mar 28 08:52:52 2018"
+[dumpfile_size] 5538
+[savefile] "/home/slawek/git/flash/HDL-LIB/interconnects/test/wb_demux_tb.gtkw"
+[timestart] 0
+[size] 1622 1078
+[pos] -1 -1
+*-27.000000 215000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.wb_demux_tb.
+[treeopen] top.wb_demux_tb.dut.
+[treeopen] top.wb_demux_tb.dut.wbm_i.
+[treeopen] top.wb_demux_tb.dut.wbm_i.[0].
+[treeopen] top.wb_demux_tb.dut.wbm_o.
+[treeopen] top.wb_demux_tb.dut.wbm_o.[0].
+[treeopen] top.wb_demux_tb.wbm_i.
+[treeopen] top.wb_demux_tb.wbm_i.[0].
+[treeopen] top.wb_demux_tb.wbm_o.
+[treeopen] top.wb_demux_tb.wbm_o.[0].
+[treeopen] top.wb_demux_tb.wbm_o.[1].
+[sst_width] 276
+[signals_width] 246
+[sst_expanded] 1
+[sst_vpaned_height] 631
+@28
+top.wb_demux_tb.dut.clk
+top.wb_demux_tb.dut.rst
+@420
+top.wb_demux_tb.dut.sel
+@800200
+-slave
+@24
+#{top.wb_demux_tb.wbs_i.adr[31:0]} top.wb_demux_tb.wbs_i.adr[31] top.wb_demux_tb.wbs_i.adr[30] top.wb_demux_tb.wbs_i.adr[29] top.wb_demux_tb.wbs_i.adr[28] top.wb_demux_tb.wbs_i.adr[27] top.wb_demux_tb.wbs_i.adr[26] top.wb_demux_tb.wbs_i.adr[25] top.wb_demux_tb.wbs_i.adr[24] top.wb_demux_tb.wbs_i.adr[23] top.wb_demux_tb.wbs_i.adr[22] top.wb_demux_tb.wbs_i.adr[21] top.wb_demux_tb.wbs_i.adr[20] top.wb_demux_tb.wbs_i.adr[19] top.wb_demux_tb.wbs_i.adr[18] top.wb_demux_tb.wbs_i.adr[17] top.wb_demux_tb.wbs_i.adr[16] top.wb_demux_tb.wbs_i.adr[15] top.wb_demux_tb.wbs_i.adr[14] top.wb_demux_tb.wbs_i.adr[13] top.wb_demux_tb.wbs_i.adr[12] top.wb_demux_tb.wbs_i.adr[11] top.wb_demux_tb.wbs_i.adr[10] top.wb_demux_tb.wbs_i.adr[9] top.wb_demux_tb.wbs_i.adr[8] top.wb_demux_tb.wbs_i.adr[7] top.wb_demux_tb.wbs_i.adr[6] top.wb_demux_tb.wbs_i.adr[5] top.wb_demux_tb.wbs_i.adr[4] top.wb_demux_tb.wbs_i.adr[3] top.wb_demux_tb.wbs_i.adr[2] top.wb_demux_tb.wbs_i.adr[1] top.wb_demux_tb.wbs_i.adr[0]
+@28
+top.wb_demux_tb.wbs_i.cyc
+top.wb_demux_tb.wbs_i.stb
+top.wb_demux_tb.wbs_o.stall
+top.wb_demux_tb.wbs_i.we
+@22
+#{top.wb_demux_tb.wbs_i.dat[7:0]} top.wb_demux_tb.wbs_i.dat[7] top.wb_demux_tb.wbs_i.dat[6] top.wb_demux_tb.wbs_i.dat[5] top.wb_demux_tb.wbs_i.dat[4] top.wb_demux_tb.wbs_i.dat[3] top.wb_demux_tb.wbs_i.dat[2] top.wb_demux_tb.wbs_i.dat[1] top.wb_demux_tb.wbs_i.dat[0]
+@28
+top.wb_demux_tb.wbs_i.sel[0]
+top.wb_demux_tb.wbs_o.ack
+@1000200
+-slave
+@800200
+-master0
+@25
+#{top.wb_demux_tb.wbm_o[0].adr[31:0]} top.wb_demux_tb.wbm_o[0].adr[31] top.wb_demux_tb.wbm_o[0].adr[30] top.wb_demux_tb.wbm_o[0].adr[29] top.wb_demux_tb.wbm_o[0].adr[28] top.wb_demux_tb.wbm_o[0].adr[27] top.wb_demux_tb.wbm_o[0].adr[26] top.wb_demux_tb.wbm_o[0].adr[25] top.wb_demux_tb.wbm_o[0].adr[24] top.wb_demux_tb.wbm_o[0].adr[23] top.wb_demux_tb.wbm_o[0].adr[22] top.wb_demux_tb.wbm_o[0].adr[21] top.wb_demux_tb.wbm_o[0].adr[20] top.wb_demux_tb.wbm_o[0].adr[19] top.wb_demux_tb.wbm_o[0].adr[18] top.wb_demux_tb.wbm_o[0].adr[17] top.wb_demux_tb.wbm_o[0].adr[16] top.wb_demux_tb.wbm_o[0].adr[15] top.wb_demux_tb.wbm_o[0].adr[14] top.wb_demux_tb.wbm_o[0].adr[13] top.wb_demux_tb.wbm_o[0].adr[12] top.wb_demux_tb.wbm_o[0].adr[11] top.wb_demux_tb.wbm_o[0].adr[10] top.wb_demux_tb.wbm_o[0].adr[9] top.wb_demux_tb.wbm_o[0].adr[8] top.wb_demux_tb.wbm_o[0].adr[7] top.wb_demux_tb.wbm_o[0].adr[6] top.wb_demux_tb.wbm_o[0].adr[5] top.wb_demux_tb.wbm_o[0].adr[4] top.wb_demux_tb.wbm_o[0].adr[3] top.wb_demux_tb.wbm_o[0].adr[2] top.wb_demux_tb.wbm_o[0].adr[1] top.wb_demux_tb.wbm_o[0].adr[0]
+@28
+top.wb_demux_tb.dut.wbm_o[0].cyc
+top.wb_demux_tb.dut.wbm_o[0].stb
+@22
+#{top.wb_demux_tb.wbm_o[0].dat[7:0]} top.wb_demux_tb.wbm_o[0].dat[7] top.wb_demux_tb.wbm_o[0].dat[6] top.wb_demux_tb.wbm_o[0].dat[5] top.wb_demux_tb.wbm_o[0].dat[4] top.wb_demux_tb.wbm_o[0].dat[3] top.wb_demux_tb.wbm_o[0].dat[2] top.wb_demux_tb.wbm_o[0].dat[1] top.wb_demux_tb.wbm_o[0].dat[0]
+@28
+top.wb_demux_tb.dut.wbm_o[0].we
+top.wb_demux_tb.dut.wbm_i[0].stall
+top.wb_demux_tb.dut.wbm_i[0].ack
+@1000200
+-master0
+@800200
+-master1
+@28
+top.wb_demux_tb.wbm_o[1].cyc
+top.wb_demux_tb.wbm_o[1].stb
+top.wb_demux_tb.wbm_i[1].stall
+top.wb_demux_tb.wbm_o[1].we
+top.wb_demux_tb.wbm_i[1].ack
+@1000200
+-master1
+@800200
+-master2
+@28
+top.wb_demux_tb.wbm_o[2].cyc
+top.wb_demux_tb.wbm_o[2].stb
+top.wb_demux_tb.wbm_i[2].stall
+top.wb_demux_tb.wbm_o[2].we
+top.wb_demux_tb.wbm_i[2].ack
+@1000200
+-master2
+[pattern_trace] 1
+[pattern_trace] 0

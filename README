@@ -1,0 +1,21 @@
+-- VHDL library (S.Siluk)
+1) Every directory has its README with deatailed description
+
+2) [AXIS] label meaning is compability with simpilified AXIS standard at BOTH 
+sides. 
+		descroption TO DO
+		
+3) Every module has its test test bench with the same name and '_tb' suffix
+
+
+
+		Vendor settings
+Some of the modules in library have multiple architectures. It can be changed
+by exporting makefile variable [ENTIY_NAME]_ARCH = [ARCH]. Where ENTIY_NAME is the
+name of the entity which is arch selected for. Entities which have multiple
+architectures are:
+	- sync/sync_block
+Arch is VHDL architecture to be selected. By default its value is 'infer' when
+pure VHDL withou vendors libs is used. Other values might be:
+	- xilinx
+	- intel (not yet supported)
