@@ -7,7 +7,9 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
-use IEEE.std_logic_misc.ALL;
+
+library vhdlbaselib;
+use vhdlbaselib.common_pkg.all;
 
 entity axis_coalesce is
 Generic (

@@ -1,38 +1,34 @@
 --------------------------------------------------------------------------------
 -- Module Name: common_pkg.vhd
 -- Language: VHDL
--- Description: 
--- 		
--- Dependencies: 
--- 
+-- Description:
+--
+-- Dependencies:
+--
 -- Revision:
 -- Revision 0.01 - File Created
 -- Additional Comments:
--- 
+--
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 use IEEE.Numeric_Std.all;
 use IEEE.math_real.all;
-use ieee.std_logic_misc.all;
 
 
 package common_pkg is
 
-shared variable uniform_seed1 : positive := 2;
-shared variable uniform_seed2 : positive := 3;
-
 function reverse_bytes( din : in std_logic_vector) return std_logic_vector;
-function reverse_slices( 
+function reverse_slices(
 	din 		: in std_logic_vector;
 	SLICE_WIDTH : in positive
 	 ) return std_logic_vector;
-function reverse_any_vector (a: in std_logic_vector) return std_logic_vector; 
+function reverse_any_vector (a: in std_logic_vector) return std_logic_vector;
 function To_Boolean(L: std_logic) return Boolean;
 function To_Std_Logic(L: boolean) return std_logic;
 function to_std_logic(
 	 arg : natural
 ) return std_logic;
-function divFun(L: natural; R: natural) return natural; 
+function divFun(L: natural; R: natural) return natural;
 function calc_width(x: positive) return positive;
 function calc_width(
 	width1: natural;
@@ -104,7 +100,8 @@ impure function rand_natural(
 	 max : natural
 ) return natural;
 
-
+function or_reduce(V : std_ulogic_vector) return std_ulogic;
+function and_reduce(V : std_ulogic_vector) return std_ulogic;
 
 end common_pkg;
 package body common_pkg is
@@ -134,13 +131,13 @@ begin
 --ans =  6
 	r := real(x);
 	l := log2(r) + 0.000000001;
-	f := floor(l);	
+	f := floor(l);
 	if D then
 		report "r"&real'image(r);
 		report "l"&real'image(l);
-		report "f"&real'image(f);	
+		report "f"&real'image(f);
 	end if;
-	
+
 	return positive(f+1.0);
 --	return positive(floor(log2(real(x)))) +1;
 --	return natural(floor(log2(real(x))+1.0));
@@ -171,7 +168,7 @@ else
 end if;
 end function calc_width;
 
--- clac with of 
+-- clac with of
 function calc_width(
 	 arg1 : std_logic_vector;
 	 arg2 : std_logic_vector
@@ -179,22 +176,22 @@ function calc_width(
 begin
 	return calc_width(2**(arg1'length)-1 + 2**(arg2'length)-1);
 end function;
---	
----- input are summed variables widths	
+--
+---- input are summed variables widths
 --function calc_sum_width(
 --	 arg1 : natural;
 --	 arg2 : natural
 --	) return natural is
 --begin
 --	return calc_width(2**(arg1)-1 + 2**(arg2)-1);
---end function;	
+--end function;
 function calc_len(
 	 arg : natural
 	) return natural is
 begin
 	return 2**arg -1;
 end function;
-	
+
 
 function divFun(L: natural; R: natural) return natural is
 begin
@@ -250,7 +247,7 @@ function reverse_bytes( din : in std_logic_vector) return std_logic_vector is
 	variable ret 		: std_logic_vector(din'length-1 downto 0);
 	variable din_v 		: std_logic_vector(din'length-1 downto 0);
 	variable bytes_num 	: natural;
-begin 
+begin
 	-- Change to -> downto if neccessry
 --	if din'ASCENDING then
 --		report "ASCENDING";
@@ -264,21 +261,21 @@ begin
 
 	-- Calcualte size in bytes
 	bytes_num := din_v'length / 8;
-	
+
 	for I in 1 to bytes_num loop
 		ret(I*8-1 downto (I-1)*8) := din_v((bytes_num-I+1)*8-1 downto (bytes_num-I)*8);
 	end loop;
-	return ret; 		
+	return ret;
 end;
 
-function reverse_slices( 
+function reverse_slices(
 	din 		: in std_logic_vector;
 	SLICE_WIDTH : in positive
 	 ) return std_logic_vector is
 	variable ret 			: std_logic_vector(din'length-1 downto 0);
 	variable din_v 			: std_logic_vector(din'length-1 downto 0);
 	variable slices_num 	: natural;
-begin 
+begin
 	-- Change to -> downto if neccessry
 --	if din'ASCENDING then
 --		report "ASCENDING";
@@ -292,12 +289,12 @@ begin
 
 	-- Calcualte size in bytes
 	slices_num := din_v'length / SLICE_WIDTH;
-	
+
 	for I in 1 to slices_num loop
 		ret(I*SLICE_WIDTH-1 downto (I-1)*SLICE_WIDTH) := din_v((slices_num-I+1)*SLICE_WIDTH-1 downto (slices_num-I)*SLICE_WIDTH);
 	end loop;
-	
-	return ret; 		
+
+	return ret;
 end;
 
 
@@ -313,24 +310,24 @@ begin
 end function;
 
 
- 
- 
- 
+
+
+
 -- sim only function for returning slv range on the basis of:
 --	slice position
 --	slice width
 	-- internal function
-	function slice_range_slv(	
+	function slice_range_slv(
 		pos_h	: natural;
 		pos_l	: natural
 	)
-	return std_logic_vector is 
-		variable v : std_logic_vector(pos_h downto pos_l) := (others => '0');						
+	return std_logic_vector is
+		variable v : std_logic_vector(pos_h downto pos_l) := (others => '0');
 	begin
 		return v;
 	end function;
-	
-	
+
+
 	-- user function. Somtimes return sigsigv in vivado...
 	function slice_range(
 		s_pos 		: natural;
@@ -347,12 +344,12 @@ end function;
 		if s_width = 1 then
 			return v;
 		end if;
-		
+
 		pos_h := (s_pos+1)*s_width-1;
 		pos_l := s_pos*s_width;
 		return slice_range_slv(pos_h, pos_l);
 	end function;
-	
+
 	-- Slice Index High
 	function sih(
 		s_pos 		: natural;
@@ -370,9 +367,9 @@ end function;
 	return natural is
 	begin
 		return s_pos*s_width;
-	end function;	
+	end function;
 
-	
+
 	function ret_max(
 		 arg1 : natural;
 		 arg2 : natural
@@ -384,8 +381,8 @@ end function;
 			return arg2;
 		end if;
 	end function;
-		
-	
+
+
 	function add_uns(
 		 arg1 : std_logic_vector;
 		 arg2 : std_logic_vector
@@ -397,17 +394,17 @@ end function;
 		max_width := ret_max(arg1'length, arg2'length) +1;
 		v1 := unsigned(arg1);
 		v2 := unsigned(arg2);
-		return resize(v1, max_width) + resize(v2, max_width);		
+		return resize(v1, max_width) + resize(v2, max_width);
 	end function;
-		
+
 	function add_slv(
 		 arg1 : std_logic_vector;
 		 arg2 : std_logic_vector
 		) return std_logic_vector is
 	begin
-		return std_logic_vector(add_uns(arg1, arg2));		
+		return std_logic_vector(add_uns(arg1, arg2));
 	end function;
-	
+
 -- function takes number as argumet and returns the closes power of 2^n
 -- which is bigger than giver arg e.g:
 -- input 11 (example number of registers) res n = 4 2^4 = 16
@@ -419,15 +416,15 @@ end function;
 		) return natural is
 		variable null_ret : natural;
 	begin
---		assert n <= natural'right 
---			report "[ceil_2_pow_n() n bigger than nat range]" 
+--		assert n <= natural'right
+--			report "[ceil_2_pow_n() n bigger than nat range]"
 --			severity failure;
 		if arg mod 2 = 0 then
 			if (arg-1) / 2**n = 0 then
 				return 2**n;
 			else
 				return ceil_2_pow_n(arg,n+1);
-			end if;			
+			end if;
 		else
 			if arg / 2**n = 0 then
 				return 2**n;
@@ -442,13 +439,9 @@ end function;
 		) return natural is
 	begin
 		return ceil_2_pow_n(arg,1);
-	end function;		
-	
-	
-	
+	end function;
 
-
-  function or_reduce(V : std_logic_vector)
+  function or_reduce(V : std_ulogic_vector)
     return std_ulogic is
     variable result : std_ulogic;
   begin
@@ -462,8 +455,21 @@ end function;
     end loop;
     return result;
   end or_reduce;
-  
 
+  function and_reduce(V : std_ulogic_vector)
+	return std_ulogic is
+	variable result : std_ulogic;
+  begin
+	for i in V'range loop
+	  if i = V'left then
+		result := V(i);
+	  else
+		result := result and V(i);
+	  end if;
+	  exit when result = '0';
+	end loop;
+	return result;
+end and_reduce;
 
 function to_01(a: in std_logic_vector)
 return std_logic_vector is
@@ -474,7 +480,7 @@ begin
 		result(i) := '1';
 	else
 		result(i) := '0';
-	end if;		
+	end if;
   end loop;
   return result;
 end;
@@ -490,7 +496,7 @@ begin
 		if keep(i) = '0' then
 			t(slice_range(i,8)'range) := (others => '0');
 		else
-			t(slice_range(i,8)'range) := (others => '1');		
+			t(slice_range(i,8)'range) := (others => '1');
 		end if;
 	end loop;
 	return t;
@@ -512,7 +518,7 @@ begin
 			r(j) := data(j);
 		end if;
 	end loop;
-	return r;	
+	return r;
 end function;
 
 function axi_st_reduce_keep(
@@ -558,7 +564,7 @@ begin
 	end loop;
 	return v;
 end function;
-	
+
 
 function max(LEFT, RIGHT: INTEGER) return INTEGER is
 begin
@@ -566,7 +572,7 @@ begin
   else return RIGHT;
     end if;
   end;
-  
+
 
 impure function rand_natural(
 	 min : natural;
@@ -575,11 +581,10 @@ impure function rand_natural(
 	variable re_rnd : real;
 	constant re_min : real := real(min);
 	constant re_max : real := real(max+1);
-begin  
-	uniform(uniform_seed1,uniform_seed2,re_rnd);
+begin
 	return natural(trunc(re_rnd*(re_max-re_min)+re_min));
 end function;
-	
 
-  	
+
+
 end common_pkg;
