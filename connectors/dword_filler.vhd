@@ -184,6 +184,10 @@ if rising_edge(clk) then
 					buf_valid						<= "0001" after ADL;
 					-- Brakuje trzech slow
 					state							<= LACK_OF_3_STATE after ADL;				
+				when "0111" =>
+					m_data_l(D3_HIGH downto D1_LOW)	<= s_data_i(D2_HIGH downto D0_LOW) after ADL;
+					m_valid							<= '1' after ADL;
+					state                           <= IDLE_STATE after ADL;
 				when others => state <= ERROR_STATE after ADL;
 				end case;
 			end if;
