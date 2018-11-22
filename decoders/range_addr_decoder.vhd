@@ -59,7 +59,7 @@ begin
 	begin
 		for i in 0 to TARGETS_NUM-1 loop
 			sel <= i;
-			exit when addr <= ADDR_ARR(i mod TARGETS_NUM);
+			exit when addr <= ADDR_ARR(i mod (TARGETS_NUM-1));
 		end loop;
 	end process;
 
