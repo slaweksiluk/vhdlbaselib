@@ -205,8 +205,8 @@ begin
 			for i in 0 to total_transactions -1 loop
 				push_stream(net, data_stream, std_logic_vector(to_unsigned(i, exp_data'length)));
 			end loop;
-			-- Read wishbone memory
-			wait until falling_edge(wb_cyc);
+			-- Wait until writing finished, then read wishbone memory
+			wait until wb_cyc'stable(1 us) and wb_cyc = '0';
 			for i in 0 to total_transactions -1 loop
 				got_data := read_word(memory, i*bytes_per_trans, bytes_per_trans);
 				exp_data := std_logic_vector(to_unsigned(i, exp_data'length));
@@ -261,4 +261,3 @@ begin
 	clk <= not clk after CLK_PERIOD / 2;
 
 end architecture;
-
