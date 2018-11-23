@@ -2,12 +2,6 @@ from itertools import product
 from vunit import VUnit
 from subprocess import call
 
-# Make sure hdl lib is up to date
-rc = call(["make", "VHDL_STD=08"], cwd="../../")
-if rc != 0:
-	print "library build fail, exit..."
-	quit()
-
 # Create VUnit instance by parsing command line arguments
 vu = VUnit.from_argv()
 
