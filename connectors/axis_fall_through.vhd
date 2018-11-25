@@ -26,6 +26,10 @@ if rising_edge(clk) then
 	if m_axis_ready = '1' or fwft then
 		m_axis_valid_r <= s_axis_valid;
 	end if;
+	-- clear m valid r when consumed
+	if m_axis_ready = '1' and m_axis_valid = '1' and fwft then
+		m_axis_valid_r <= '0';
+	end if;
 	m_axis_ready_r <= s_axis_ready;
 end if;
 end process;

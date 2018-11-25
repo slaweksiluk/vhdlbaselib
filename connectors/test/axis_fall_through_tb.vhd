@@ -49,6 +49,27 @@ begin
 		wait until rising_edge(clk);
 		check_equal(m_axis_valid, '1');
 
+	elsif run("fall through check2") then
+		m_axis_ready <= '0';
+		s_axis_valid <= '0';
+		wait until rising_edge(clk);
+		wait until rising_edge(clk);
+		s_axis_valid <= '1';
+		wait until rising_edge(clk);
+		wait until rising_edge(clk);
+		m_axis_ready <= '1';
+		wait until rising_edge(clk);
+		s_axis_valid <= '0';
+		m_axis_ready <= '0';
+
+		wait until rising_edge(clk);
+		wait until rising_edge(clk);
+		s_axis_valid <= '1';
+		wait until rising_edge(clk);
+		wait until rising_edge(clk);
+		wait until rising_edge(clk);
+		check_equal(m_axis_valid, '1', "m valid");
+
 	elsif run("double fall through check") then
 		m_axis_ready <= '0';
 		s_axis_valid <= '0';

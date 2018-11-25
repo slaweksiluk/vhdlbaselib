@@ -34,7 +34,7 @@ architecture bench of axis_fall_through_ate_tb is
 begin
 
 stimulus : process
-	variable test_len : natural := 256;
+	variable test_len : natural := 256*16;
 begin
 	test_runner_setup(runner, runner_cfg);
 
@@ -99,7 +99,7 @@ begin
     test_runner_cleanup(runner);
 	wait;
 end process;
-test_runner_watchdog(runner, 40 us);
+test_runner_watchdog(runner, 4 ms);
 
 	ATE_USER_INIT(1,1);
 

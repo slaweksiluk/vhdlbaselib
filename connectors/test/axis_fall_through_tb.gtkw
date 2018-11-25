@@ -1,0 +1,30 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Fri Nov 23 17:20:58 2018
+[*]
+[dumpfile] "/home/slawek/git/astri/SIROCCO-HDL/vhdlbaselib/connectors/test/vunit_out/test_output/lib.axis_fall_through_tb.fall_through_check2_baa53a76fda4cf4f9efb197ebd7b814867a1a4e2/ghdl/wave.ghw"
+[dumpfile_mtime] "Fri Nov 23 17:20:37 2018"
+[dumpfile_size] 1361
+[savefile] "/home/slawek/git/astri/SIROCCO-HDL/vhdlbaselib/connectors/test/axis_fall_through_tb.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-26.719933 90000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.axis_fall_through_tb.
+[sst_width] 225
+[signals_width] 244
+[sst_expanded] 1
+[sst_vpaned_height] 181
+@28
+top.axis_fall_through_tb.dut.clk
+top.axis_fall_through_tb.dut.s_axis_valid
+top.axis_fall_through_tb.dut.s_axis_ready
+top.axis_fall_through_tb.dut.m_axis_valid
+top.axis_fall_through_tb.dut.m_axis_ready
+top.axis_fall_through_tb.dut.m_axis_ready_r
+top.axis_fall_through_tb.dut.m_axis_valid_r
+@420
+top.axis_fall_through_tb.dut.fwft
+[pattern_trace] 1
+[pattern_trace] 0
