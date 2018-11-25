@@ -69,6 +69,7 @@ if rising_edge(clk) then
 	else
 		case state is
 		when ST_IDLE =>
+			axis_desc_ready <= '0';
 			if axis_desc_valid = '1' then
 				state	<= ST_ISSUE_WB;
 				desc_load <= true;
