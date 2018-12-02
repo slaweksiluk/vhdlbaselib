@@ -56,7 +56,8 @@ architecture beh of wb_master_axis_master_bridge is
 type state_type is 	(
 						ST_IDLE,
 						ST_ISSUE_WB,
-						ST_CYCLE_END
+						ST_CYCLE_END,
+						ST_NEW_DESC
 					);
 signal state	: state_type;
 signal buffer_avail	: boolean := false;
@@ -82,9 +83,11 @@ if rising_edge(clk) then
 		wb_cyc_l <= '0';
 		wb_stb_l <= '0';
 		desc_load <= false;
+		axis_desc_ready <= '0';
 	else
 		case state is
 		when ST_IDLE =>
+			axis_desc_ready <= '0';
 			if axis_desc_valid = '1' then
 				state	<= ST_ISSUE_WB;
 				desc_load <= true;
@@ -99,24 +102,22 @@ if rising_edge(clk) then
 			elsif not buffer_avail or max_requests_pending then
 				wb_stb_l <= '0';
 			end if;
-
 			-- Stop when desc last address is reached
 			if wb_adr_uns = desc_last_addr and wb_request then
 				wb_stb_l <= '0';
-				-- Continue with next descriptor by defualt
-				state <= ST_IDLE;
-				-- If there is no more descriptors just wait until
-				-- all acks are processed
-				if axis_desc_valid = '0' then
-					state <= ST_CYCLE_END;
-				end if;
+				state <= ST_CYCLE_END;
 			end if;
 
 		when ST_CYCLE_END =>
 			if cycle_finished then
 				wb_cyc_l <= '0';
-				state <= ST_IDLE;
+				state <= ST_NEW_DESC;
+				axis_desc_ready <= '1';
 			end if;
+
+		when ST_NEW_DESC =>
+			state <= ST_IDLE;
+			axis_desc_ready <= '0';
 
 
 		when others =>
@@ -124,8 +125,6 @@ if rising_edge(clk) then
 	end if;
 end if;
 end process;
-
-axis_desc_ready <= '1' when desc_load else '0';
 
 -- Address logic. Load base address when new descriptor is present,
 -- then increment it avery time wb_request is issuedw
